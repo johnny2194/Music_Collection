@@ -23,7 +23,20 @@ def save()
   RETURNING id;"
 
   result = SqlRunner.run(sql)
-  puts result[0]
   @id = result[0]["id"].to_i
+end 
+
+def update()
+  sql = "
+  UPDATE artists SET(
+  name,
+  genre
+  ) = (
+  '#{@name}',
+  '#{@genre}'
+  )
+  WHERE id = #{@id};"
+  SqlRunner.run(sql)
+
 end 
 end 
