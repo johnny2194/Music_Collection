@@ -45,5 +45,8 @@ def Artist.all()
   return SqlRunner.run(sql).map { |artist| Artist.new(artist) }
 end
 
-
+def delete()
+  sql = "DELETE FROM artists WHERE id = #{@id};"
+  SqlRunner.run(sql)
+end 
 end 
