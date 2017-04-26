@@ -37,6 +37,13 @@ def update()
   )
   WHERE id = #{@id};"
   SqlRunner.run(sql)
+end
 
-end 
+
+def Artist.all()
+  sql = "SELECT * FROM artists;"
+  return SqlRunner.run(sql).map { |artist| Artist.new(artist) }
+end
+
+
 end 
