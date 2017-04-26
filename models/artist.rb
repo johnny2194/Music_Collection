@@ -1,5 +1,5 @@
 require_relative('../db/sql_runner.rb')
-
+require('pry-byebug')
 class Artist
 attr_reader :id
 attr_accessor :name, :genre
@@ -54,5 +54,15 @@ attr_accessor :name, :genre
     sql = "SELECT * FROM artists WHERE id = #{id}"
       artist = Artist.new(SqlRunner.run(sql)[0])
       return artist
+  end 
+
+  def albums()
+    sql = "SELECT * FROM albums WHERE artist_id = #{@id};"
+      album_hashes = SqlRunner.run(sql)
+      album_objects = album_hashes.map do
+        |album_hash| 
+          Album.new(album_hash)
+      end
+      return album_objects
   end 
 end 

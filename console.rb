@@ -10,15 +10,17 @@ artist1.save()
 
 album1 = Album.new({
  'name' => 'Thriller',
- 'year' => '1982'
+ 'year' => '1982',
+ 'artist_id' => artist1.id
   })
 album1.save()
 
 album2 = Album.new({
  'name' => 'Bad',
- 'year' => '1987'
+ 'year' => '1987',
+ 'artist_id' => artist1.id
   })
 album2.save()
-
-binding.pry 
+artist1.albums
+binding.pry
 nil 
